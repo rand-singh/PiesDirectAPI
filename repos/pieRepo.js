@@ -60,7 +60,33 @@ let pieRepo = {
                 });                
             }
         });
-    }
+    },
+    update: function (newData, id, resolve, reject) {
+        fs.readFile(FILE_NAME, function (err, data) {
+            if (err) {
+                reject(err);
+            }
+            else {
+                let pies = JSON.parse(data);
+                let pie = pies.find(p => p.id === +id);
+
+                if (pie) {
+                    Object.assign(pie, newData);
+
+                    fs.writeFile(FILE_NAME, JSON.stringify(pie), function (err) {
+                        if (err) {
+                            reject(err);
+                        }
+                        else {
+                            resolve(newData);
+                        }
+                    });
+                }
+                
+            }
+        });
+    },
+
 };
 
 module.exports = pieRepo;
