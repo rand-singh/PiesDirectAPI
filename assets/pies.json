@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "name": "Green Apple",
-        "wholePrice": 19.99,
+        "name": "Pink Lade Apple",
+        "wholePrice": 45.99,
         "slicePrice": 4.99,
         "sliceCalories": 67,
         "imageUrl": "images/apple.jpg"
