@@ -1,0 +1,4 @@
+********************************************************************************
+Date/Time: 12/16/2020
+Exception Info: {"status":500,"statusText":"Internal Server Error","message":"ENOENT: no such file or directory, open 'C:\\Users\\Rand\\Devlopment\\JavaScript-REST-API\\PiesDirectAPI\\assets\\pies2.json'","error":{"errno":-4058,"call":"open","code":"INTERNAL_SERVER_ERROR","message":"ENOENT: no such file or directory, open 'C:\\Users\\Rand\\Devlopment\\JavaScript-REST-API\\PiesDirectAPI\\assets\\pies2.json'"},"requestInfo":{"hostname":"localhost","path":"/api/"}}
+********************************************************************************

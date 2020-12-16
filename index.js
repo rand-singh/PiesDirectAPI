@@ -182,6 +182,9 @@ app.use('/api/', router);
 // Configure exception logger to console
 app.use(errorHelper.logErrorsToConsole);
 
+// Congifure exception logger to file
+app.use(errorHelper.logErrorsToFile);
+
 // Configure client error handler
 app.use(errorHelper.clientErrorHandler);
 
