@@ -178,7 +178,28 @@ router.patch('/:id', function (req, res, next) {
 // Configure router so all routes are prefixed with /api/v1
 app.use('/api/', router);
 
+/**
+ * Configure our own execption middleware last
+ * 
+ * Express knows this is middleware by the parameters accepted
+ * in the callback function, note the first param "err"
+ * 
+ * This will override the server middleware
+ */
+app.use(function(err, req, res, next) {
+    res.status(500).json({
+        "status": 500,
+        "statusText": "Internal Server Error",
+        "message": err.message,
+        "error": {
+            "code": "INTERNAL_SERVER_ERROR",
+            "message": err.message
+        }
+    });
+});
+
 // Create server to listen on port 5000
 var server = app.listen(5000, function () {
     console.log("Node server is running on http://localhost:5000");
 });
+
