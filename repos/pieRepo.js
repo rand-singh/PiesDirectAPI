@@ -73,7 +73,7 @@ let pieRepo = {
                 if (pie) {
                     Object.assign(pie, newData);
 
-                    fs.writeFile(FILE_NAME, JSON.stringify(pie), function (err) {
+                    fs.writeFile(FILE_NAME, JSON.stringify(pies), function (err) {
                         if (err) {
                             reject(err);
                         }
@@ -82,7 +82,7 @@ let pieRepo = {
                         }
                     });
                 }
-                
+
             }
         });
     },
