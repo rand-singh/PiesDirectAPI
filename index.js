@@ -178,6 +178,30 @@ router.patch('/:id', function (req, res, next) {
 // Configure router so all routes are prefixed with /api/v1
 app.use('/api/', router);
 
+function errorBuilder(err) {
+    return {
+        "status": 500,
+        "statusText": "Internal Server Error",
+        "message": err.message,
+        "error": {
+            "errno": err.errno,
+            "call": err.syscall,
+            "code": "INTERNAL_SERVER_ERROR",
+            "message": err.message            
+        }
+    }
+}
+
+/**
+ * Configure exeception logger
+ * 
+ * Continue the flow be ensuring you specify the next(err) call
+ */
+app.use(function(err, req, res, next) {
+    console.log(errorBuilder(err));
+    next(err);
+});
+
 /**
  * Configure our own execption middleware last
  * 
@@ -187,15 +211,7 @@ app.use('/api/', router);
  * This will override the server middleware
  */
 app.use(function(err, req, res, next) {
-    res.status(500).json({
-        "status": 500,
-        "statusText": "Internal Server Error",
-        "message": err.message,
-        "error": {
-            "code": "INTERNAL_SERVER_ERROR",
-            "message": err.message
-        }
-    });
+    res.status(500).json(errorBuilder(err));
 });
 
 // Create server to listen on port 5000
